@@ -68,6 +68,9 @@ export default function App() {
 
   useEffect(() => {
     const t = setTimeout(() => setIntro(false), 1800)
+    let ticking = false
+    let mx = 0, my = 0
+    const desktop = window.matchMedia("(pointer:fine)").matches
     const onScroll = () => {
       setScrolled(window.scrollY > 40)
       if (bar.current) {
@@ -75,15 +78,22 @@ export default function App() {
         bar.current.style.width = `${(window.scrollY / h) * 100}%`
       }
     }
-    const onMove = (e: MouseEvent) => {
-      const dx = e.clientX / window.innerWidth - 0.5
-      const dy = e.clientY / window.innerHeight - 0.5
-      if (glow.current) glow.current.style.transform = `translate(${e.clientX - 250}px, ${e.clientY - 250}px)`
-      if (heroImg.current) heroImg.current.style.transform = `scale(1.08) translate(${dx * -22}px, ${dy * -14}px)`
-      if (heroTxt.current) heroTxt.current.style.transform = `translate(${dx * 12}px, ${dy * 8}px)`
+    const apply = () => {
+      ticking = false
+      const dx = mx / window.innerWidth - 0.5
+      const dy = my / window.innerHeight - 0.5
+      if (glow.current) glow.current.style.transform = `translate(${mx - 250}px, ${my - 250}px)`
+      if (window.scrollY < window.innerHeight) {
+        if (heroImg.current) heroImg.current.style.transform = `scale(1.08) translate(${dx * -22}px, ${dy * -14}px)`
+        if (heroTxt.current) heroTxt.current.style.transform = `translate(${dx * 12}px, ${dy * 8}px)`
+      }
     }
-    window.addEventListener("scroll", onScroll)
-    window.addEventListener("mousemove", onMove)
+    const onMove = (e: MouseEvent) => {
+      mx = e.clientX; my = e.clientY
+      if (!ticking) { ticking = true; requestAnimationFrame(apply) }
+    }
+    window.addEventListener("scroll", onScroll, { passive: true })
+    if (desktop) window.addEventListener("mousemove", onMove, { passive: true })
     return () => { clearTimeout(t); window.removeEventListener("scroll", onScroll); window.removeEventListener("mousemove", onMove) }
   }, [])
 
@@ -133,7 +143,7 @@ export default function App() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#2a1508] via-[#2a1508]/35 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#2a1508]/55 via-transparent to-transparent" />
           <div className="absolute inset-0 z-[6] pointer-events-none">
-            <Particles particleCount={120} particleColors={["#ffd27f", "#ffe9c7", "#ffffff"]} particleBaseSize={70} particleSpread={12} speed={0.1} alphaParticles moveParticlesOnHover particleHoverFactor={1.4} />
+            <Particles particleCount={55} particleColors={["#ffd27f", "#ffe9c7", "#ffffff"]} particleBaseSize={70} particleSpread={12} speed={0.09} alphaParticles pixelRatio={1} />
           </div>
           <div ref={heroTxt} className="relative z-10 mx-auto max-w-6xl px-6 w-full pb-16 md:pb-24 text-[#fdf6ea] will-change-transform">
             <span className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium mb-3 backdrop-blur border animate-[fadeup_.5s_ease-out_both] ${isOpen ? "bg-emerald-500/20 border-emerald-300/40 text-emerald-100" : "bg-white/10 border-white/25 text-[#fdf6ea]/90"}`}>
@@ -206,7 +216,7 @@ export default function App() {
 
         {/* ENERJİ BANDI */}
         <section className="relative h-[62vh] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-fixed bg-center bg-cover scale-105" style={{ backgroundImage: "url(foto/foto1.jpg)" }} />
+          <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: "url(foto/foto1.jpg)" }} />
           <div className="absolute inset-0 bg-[#2a1508]/72" />
           <div className="relative z-10 text-center text-[#fdf6ea] px-6">
             <p className="hand text-3xl text-amber-300 mb-2">bu sokakta çok şey oldu</p>
@@ -301,7 +311,7 @@ export default function App() {
         {/* YORUMLAR */}
         <section id="yorumlar" className="relative overflow-hidden bg-[#152420] text-[#fdf6ea] py-24 md:py-28 scroll-mt-20">
           <div className="absolute inset-0 z-0 pointer-events-none opacity-70">
-            <Particles particleCount={80} particleColors={["#ffd27f", "#ef7a2d"]} particleBaseSize={60} particleSpread={14} speed={0.08} alphaParticles moveParticlesOnHover particleHoverFactor={1.2} />
+            <Particles particleCount={38} particleColors={["#ffd27f", "#ef7a2d"]} particleBaseSize={60} particleSpread={14} speed={0.07} alphaParticles pixelRatio={1} />
           </div>
           <div className="relative z-10 mx-auto max-w-6xl px-6">
             <AnimatedContent distance={50} duration={0.8}>

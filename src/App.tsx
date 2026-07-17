@@ -38,10 +38,10 @@ const REVIEWS = [
   { n: "Safiye Yıldız", meta: "Yerel Rehber · 20 yorum", t: "Mahalle barı konseptli sıcak bir yer. Güler yüzlü, misafirperver bir karşılama. Tekrar geleceğim.", s: 4 },
 ]
 const GALLERY = [
-  ["/foto/foto3.jpg", "MANUEL, gece", "-3deg"],
-  ["/foto/foto2.jpg", "gün batımı 🌅", "2.5deg"],
-  ["/foto/foto1.jpg", "sokak dolu", "-1.5deg"],
-  ["/foto/foto4.jpg", "fıçı akıyor 🍺", "3deg"],
+  ["foto/foto3.jpg", "MANUEL, gece", "-3deg"],
+  ["foto/foto2.jpg", "gün batımı 🌅", "2.5deg"],
+  ["foto/foto1.jpg", "sokak dolu", "-1.5deg"],
+  ["foto/foto4.jpg", "fıçı akıyor 🍺", "3deg"],
 ]
 
 function Wave({ className = "" }: { className?: string }) {
@@ -94,7 +94,7 @@ export default function App() {
         {/* giriş */}
         <div className={`fixed inset-0 z-[200] bg-[#1c2b26] flex items-center justify-center transition-opacity duration-700 ${intro ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
           <div className="text-center animate-[fadeup_.8s_ease-out]">
-            <img src="/foto/logo.jpg" alt="Manuel" className="h-24 w-24 rounded-full ring-2 ring-amber-400/70 object-cover mx-auto shadow-2xl" />
+            <img src="foto/logo.jpg" alt="Manuel" className="h-24 w-24 rounded-full ring-2 ring-amber-400/70 object-cover mx-auto shadow-2xl" />
             <p className="mt-4 hand text-4xl text-amber-300">gel otur 🍺</p>
           </div>
         </div>
@@ -113,7 +113,7 @@ export default function App() {
         <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#1c2b26]/90 backdrop-blur-md shadow-lg" : ""}`}>
           <nav className="mx-auto max-w-6xl px-6 h-[72px] flex items-center justify-between text-[#f7f0e3]">
             <a href="#top" className="flex items-center gap-2.5">
-              <img src="/foto/logo.jpg" alt="Manuel Bitez" className="h-10 w-10 rounded-full ring-2 ring-amber-400/70 object-cover" />
+              <img src="foto/logo.jpg" alt="Manuel Bitez" className="h-10 w-10 rounded-full ring-2 ring-amber-400/70 object-cover" />
               <span className="font-heading font-semibold text-xl tracking-tight">Manuel</span>
             </a>
             <div className="hidden md:flex items-center gap-8 text-sm tracking-wide">
@@ -129,7 +129,7 @@ export default function App() {
 
         {/* HERO — gün batımı */}
         <section id="top" className="relative h-[100svh] w-full overflow-hidden flex items-end">
-          <img ref={heroImg} src="/foto/foto2.jpg" alt="Manuel Bitez terasından gün batımı" className="absolute inset-0 h-full w-full object-cover object-[center_45%] scale-[1.08] transition-transform duration-300 ease-out will-change-transform" />
+          <img ref={heroImg} src="foto/foto2.jpg" alt="Manuel Bitez terasından gün batımı" className="absolute inset-0 h-full w-full object-cover object-[center_45%] scale-[1.08] transition-transform duration-300 ease-out will-change-transform" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#2a1508] via-[#2a1508]/35 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#2a1508]/55 via-transparent to-transparent" />
           <div className="absolute inset-0 z-[6] pointer-events-none">
@@ -180,7 +180,7 @@ export default function App() {
             <div className="relative sticker">
               <div className="tape -top-3 left-8 rounded-sm rotate-[6deg]" />
               <GlareHover width="100%" height="auto" borderRadius="18px" background="transparent" borderColor="transparent" glareColor="#ffffff" glareOpacity={0.25} glareAngle={-40} glareSize={260} transitionDuration={900} className="!block">
-                <img src="/foto/foto1.jpg" alt="Manuel'de canlı bir gece" className="rounded-[18px] shadow-2xl w-full object-cover aspect-[5/4]" />
+                <img src="foto/foto1.jpg" alt="Manuel'de canlı bir gece" className="rounded-[18px] shadow-2xl w-full object-cover aspect-[5/4]" />
               </GlareHover>
             </div>
           </AnimatedContent>
@@ -206,7 +206,7 @@ export default function App() {
 
         {/* ENERJİ BANDI */}
         <section className="relative h-[62vh] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-fixed bg-center bg-cover scale-105" style={{ backgroundImage: "url(/foto/foto1.jpg)" }} />
+          <div className="absolute inset-0 bg-fixed bg-center bg-cover scale-105" style={{ backgroundImage: "url(foto/foto1.jpg)" }} />
           <div className="absolute inset-0 bg-[#2a1508]/72" />
           <div className="relative z-10 text-center text-[#fdf6ea] px-6">
             <p className="hand text-3xl text-amber-300 mb-2">bu sokakta çok şey oldu</p>
@@ -244,7 +244,7 @@ export default function App() {
               <div className="relative sticker">
                 <div className="tape -top-3 right-10 rotate-[-8deg] rounded-sm" />
                 <GlareHover width="100%" height="auto" borderRadius="18px" background="transparent" borderColor="transparent" glareColor="#ffd27f" glareOpacity={0.35} glareAngle={-30} glareSize={300} transitionDuration={1000} className="!block">
-                  <img src="/foto/foto4.jpg" alt="Guinness & Kilkenny fıçı biralar" className="rounded-[18px] shadow-2xl w-full object-cover aspect-[4/5] ring-1 ring-white/10" />
+                  <img src="foto/foto4.jpg" alt="Guinness & Kilkenny fıçı biralar" className="rounded-[18px] shadow-2xl w-full object-cover aspect-[4/5] ring-1 ring-white/10" />
                 </GlareHover>
               </div>
             </AnimatedContent>
@@ -363,7 +363,7 @@ export default function App() {
           <div className="mx-auto max-w-6xl px-6 py-14 flex flex-col md:flex-row justify-between gap-8">
             <div className="max-w-xs">
               <span className="flex items-center gap-2.5 text-[#fdf6ea]">
-                <img src="/foto/logo.jpg" alt="Manuel" className="h-10 w-10 rounded-full ring-2 ring-amber-400/70 object-cover" />
+                <img src="foto/logo.jpg" alt="Manuel" className="h-10 w-10 rounded-full ring-2 ring-amber-400/70 object-cover" />
                 <span className="font-heading font-semibold text-xl">Manuel</span>
               </span>
               <p className="mt-4 hand text-2xl text-amber-300">köy birahanesi & napoli pizzacısı</p>
